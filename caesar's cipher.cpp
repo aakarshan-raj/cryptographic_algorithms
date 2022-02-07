@@ -1,131 +1,130 @@
-#include <iostream>
-//use small letters only
+#include<iostream>
+// plaintext in lowercase
+//ciphertext in uppercase
 using namespace std;
-void char_all();
-string encryptor(string plantext,int key);
-string decryptor(string cipertext,int key);
+string enc(string,int);
+string dec(string ciphertext,int key);
 int main(){
+ 
+ cout<<enc("aakarshan",10)<<endl;
+ cout<<dec(enc("aakarshan",10),10)<<endl;
 
+}
 
-char op;
-op = 'y';
-while(op == 'y'){
-string what;
+string enc(string plaintext, int key){
 
-cout<<"do u wanna encrypt or decrypt:";
-cin>>what;
-if(what == "encrypt"){
+char cipher[plaintext.length()];
+string ciphertext;
+for(int x=0;x<plaintex#include<iostream>
+// plaintext in lowercase
+//ciphertext in uppercase
+using namespace std;
+string enc(string,int);
+string dec(string ciphertext,int key);
+int main(){
+ 
+ cout<<enc("aakarshan",10)<<endl;
+ cout<<dec(enc("aakarshan",10),10)<<endl;
+
+}
+
+string enc(string plaintext, int key){
+
+char cipher[plaintext.length()];
+string ciphertext;
+for(int x=0;x<plaintext.length();x++){
+
+cipher[x] = (((plaintext[x]-97)+key)%26)+65;
+ciphertext.append(1,cipher[x]);
+
+}
+return ciphertext;
+}
+
+string dec(string ciphertext,int key){
+#include<iostream>
+// plaintext in lowercase
+//ciphertext in uppercase
+using namespace std;
+string enc(string,int);
+string dec(string ciphertext,int key);
+int main(){
+ 
+ cout<<enc("aakarshan",10)<<endl;
+ cout<<dec(enc("aakarshan",10),10)<<endl;
+
+}
+
+string enc(string plaintext, int key){
+
+char cipher[plaintext.length()];
+string ciphertext;
+for(int x=0;x<plaintext.length();x++){
+
+cipher[x] = (((plaintext[x]-97)+key)%26)+65;
+ciphertext.append(1,cipher[x]);
+
+}
+return ciphertext;
+}
+
+string dec(string ciphertext,int key){
+
 string plaintext;
-int key;
-cout<<"Enter the text that you want to encrypt:";
-getline(cin,plaintext);
-cout<<"Enter the key:";
-cin>>key;
-cout<<"Here is the encrypted text:"<<encryptor(plaintext,key)<<endl;
+char plain[ciphertext.length()];
+
+for(int x = 0;x<ciphertext.length();x++){
+ciphertext[x] =  ciphertext[x]-65;    
+int p = ciphertext[x] - key;
+if(p<0){
+    p = 26+p;
 }
 
-else{
-string cipertext;
-int key;
-cout<<"Enter the cipertext that you want to decrypt:";
-getline(cin,cipertext);
-cout<<"Enter the key:";
-cin>>key;
-cout<<"Here is the decrypted text:"<<decryptor(cipertext,key)<<endl;
+plain[x] = p+97;
+plaintext.append(1,plain[x]);
+}
+return plaintext;
+    
+}
+string plaintext;
+char plain[ciphertext.length()];
 
+for(int x = 0;x<ciphertext.length();x++){
+ciphertext[x] =  ciphertext[x]-65;    
+int p = ciphertext[x] - key;
+if(p<0){
+    p = 26+p;
 }
 
-cout<<"Do u want to continue:(if yes press y else press anything:";
-cin>>op;
-
-if(op != 'y'){
- break;
+plain[x] = p+97;
+plaintext.append(1,plain[x]);
 }
+return plaintext;
+    
+}t.length();x++){
 
-}
-
- }
-
-
-
-string encryptor(string plaintext ,int key){
-string cipertext;
-cipertext = plaintext;
-char plainarr[cipertext.length()-1];
-
-for(int i = 0;i<cipertext.length();i++)
-     {
-      plainarr[i] = cipertext[i];
-     }
-char crypto[cipertext.length()-1];
-
-for(int i =0;i<cipertext.length();i++)
-{
-      char x;
-      x = plainarr[i];
-      if(x == ' ')
-       {
-        cipertext[i] = x;
-       }
-      else
-    {
-       int z = x-97;
-       int y = (z+key)%26;
-       y = y + 97;
-       x = char(y);
-       cipertext[i] = x;
-
-    }
+cipher[x] = (((plaintext[x]-97)+key)%26)+65;
+ciphertext.append(1,cipher[x]);
 
 }
-
-return(cipertext);
-
+return ciphertext;
 }
 
-string decryptor(string cipertext,int key){
+string dec(string ciphertext,int key){
 
-string plaintext = cipertext;
-char ciperarr[plaintext.length() - 1];
+string plaintext;
+char plain[ciphertext.length()];
 
-for(int i =0;i<plaintext.length();i++){
-
-ciperarr[i] = plaintext[i];
-
+for(int x = 0;x<ciphertext.length();x++){
+ciphertext[x] =  ciphertext[x]-65;    
+int p = ciphertext[x] - key;
+if(p<0){
+    p = 26+p;
 }
 
-for(int i =0;i<plaintext.length();i++){
-char letter;
-letter = ciperarr[i];
-
-if(letter == ' ')
-       {
-        cipertext[i] = letter;
-       }
-else if(int((char(ciperarr[i])-97)-key)<0)
-{
-int a = (letter-97)-key;
-a = a+26+97;
-letter = char(a);
-plaintext[i] = letter;
+plain[x] = p+97;
+plaintext.append(1,plain[x]);
 }
-
-else{
-int a = (letter-97)-key;
-letter = char(a)+97;
-plaintext[i] = letter;
+return plaintext;
+    
 }
-}
-
-return(plaintext);
-
-
-}
-
-
-
-
-
-
-
-
