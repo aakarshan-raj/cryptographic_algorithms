@@ -1,4 +1,5 @@
 #include <iostream>
+//encrypts words with length multiple of 3
 using namespace std;
 string encrypt(string data, int *ptr);
 int main(){
@@ -13,12 +14,12 @@ cout<<cipher;
 }
 
 string encrypt(string data, int *ptr){                    /* [1,1] [1,2] [1,3] */
-int len = data.length();
-int iter = len/3;
+int len = data.length();                                  /* [2,1] [2,2] [2,3] */   
+int iter = len/3;                                         /* [3,1] [3,2] [3,3] */  
 int iter2 = 0;
 int a[3][3];    
-string cipher;                                        /* [2,1] [2,2] [2,3] */
-for(int i=0;i<3;i++){                                   /* [3,1] [3,2] [3,3] */
+string cipher;                                        
+for(int i=0;i<3;i++){                                   
     for(int j=0;j<3;j++){
         a[i][j] = *ptr;
         ptr++;
